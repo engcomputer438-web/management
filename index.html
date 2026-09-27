@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Disaster Management System</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body { 
+     
+
+            background: #050a10;
+            color: white;
+        }
+        #nagpur-blog {
+    background-image: url("photo1.png");
+    background-size: cover;
+    background-position: center;
+    animation: blogBg 12s infinite;
+    min-height: 500px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: blogBg 12s infinite;
+}
+
+@keyframes blogBg {
+    0%, 30% {
+        background-image: url("photo2.png");
+    }
+
+    35%, 65% {
+        background-image: url("photo3.png");
+    }
+
+    70%, 100% {
+        background-image: url("photo4.png");
+    }
+}
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            height: 80px;
+            background: #080d14;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+            border-bottom: 1px solid #151d28;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+       
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            font-size: 32px;
+            color: #ff3d32;
+        }
+
+        .logo-text {
+            font-size: 12px;
+            font-weight: bold;
+            line-height: 12px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff4538;
+        }
+
+        .sos {
+            color: white;
+        }
+
+        .sos::before {
+            content: "●";
+            color: #ff4035;
+            margin-right: 12px;
+        }
+
+        .help-btn {
+            border: 1px solid #ff4035;
+            padding: 9px 25px;
+            border-radius: 4px;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 630px;
+            position: relative;
+            background:
+                linear-gradient(rgba(2,8,14,0.70), rgba(2,8,14,0.80)),
+                url("disaster-background.jpg");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 1000px;
+        }
+
+        .hero h1 {
+            font-size: 74px;
+            line-height: 0.9;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 35px;
+        }
+
+        .hero p {
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+
+        .report-btn {
+            background: #ff493d;
+            border: none;
+            color: white;
+            padding: 15px 45px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .report-btn:hover {
+            background: #ff2417;
+            transform: scale(1.05);
+        }
+
+        /* Left text */
+
+        .early-text {
+            position: absolute;
+            left: 7%;
+            top: 43%;
+            text-align: left;
+            font-size: 48px;
+            line-height: 1.45;
+        }
+
+        /* Slider dots */
+
+        .dots {
+            position: absolute;
+            bottom: 115px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 7px;
+        }
+
+        .dots span {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .dots span:nth-child(2) {
+            background: #ff9de2;
+        }
+
+        .dots span:nth-child(3) {
+            background: #00d9b0;
+        }
+
+        .dots span:nth-child(4) {
+            background: #00c98d;
+        }
+
+        /* ================= FEATURES ================= */
+
+        .features {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background: rgba(3, 8, 14, 0.75);
+            padding: 25px 3%;
+        }
+
+        .feature {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* ================= VOLUNTEER ================= */
+
+        .volunteer {
+            padding: 50px 7%;
+            display: grid;
+            grid-template-columns: 40% 60%;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .volunteer h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 35px;
+        }
+
+        .volunteer ul {
+            padding-left: 25px;
+        }
+
+        .volunteer li {
+            margin: 13px 0;
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
+        /* ================= PREDICTION ================= */
+
+        .prediction {
+            min-height: 350px;
+            background:
+                linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.6)),
+                url("prediction-dashboard.jpg");
+            background-size: cover;
+            background-position: center;
+            border-radius: 3px;
+            padding: 35px;
+            position: relative;
+        }
+
+        .prediction h2 {
+            font-size: 24px;
+            text-align: left;
+            margin: 0 0 30px 25px;
+        }
+
+        .prediction-item {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 25px 0;
+            margin-left: 25px;
+        }
+
+        .search-box {
+            position: absolute;
+            bottom: 20px;
+            left: 7%;
+            width: 85%;
+            background: white;
+            height: 55px;
+            border-radius: 18px;
+            color: black;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            font-size: 30px;
+        }
+
+        .search-box span {
+            margin-left: auto;
+        }
+
+        /* ================= WARNING ================= */
+
+        .warning-title {
+            text-align: center;
+            margin: 35px 0;
+            font-size: 28px;
+        }
+
+        .warning-section {
+            background: white;
+            color: #121323;
+            margin: 0 1%;
+            min-height: 300px;
+            border: 7px solid #050505;
+            padding: 30px;
+        }
+
+        .warning-section h2 {
+            text-align: center;
+            font-size: 52px;
+            text-decoration: underline;
+            margin-bottom: 35px;
+        }
+
+        .warning-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .warning-card {
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #bbb;
+        }
+
+        .warning-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .high {
+            color: #d92323;
+        }
+
+        .medium {
+            color: #d18a00;
+        }
+
+        .low {
+            color: #16883c;
+        }
+
+        /* ================= MAP ================= */
+
+        .map-section {
+            margin-top: 40px;
+            min-height: 550px;
+            background:
+                linear-gradient(rgba(255,255,255,.2), rgba(255,255,255,.2)),
+                url("map.jpg");
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding-top: 30px;
+        }
+
+        .map-section h1 {
+            color: #111329;
+            font-size: 42px;
+            text-decoration: underline;
+            margin-bottom: 30px;
+        }
+
+        .map-section h2 {
+            color: #111329;
+            font-size: 28px;
+            margin-bottom: 250px;
+        }
+
+        /* ================= RESCUE ================= */
+
+        .rescue-section {
+            background:
+                linear-gradient(rgba(0,0,0,.82), rgba(0,0,0,.82)),
+                url("rescue-background.jpg");
+            background-size: cover;
+            background-position: center;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .rescue-section h1 {
+            font-size: 52px;
+            text-transform: lowercase;
+            margin-bottom: 30px;
+        }
+
+        .rescue-section p {
+            font-size: 21px;
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.5;
+        }
+
+        .rescue-list {
+            list-style-position: inside;
+            max-width: 800px;
+            margin: 25px auto;
+            text-align: center;
+        }
+
+        .rescue-list li {
+            font-size: 20px;
+            margin: 12px 0;
+            line-height: 1.4;
+        }
+
+        .call-btn {
+            display: inline-block;
+            background: #ff3f35;
+            padding: 13px 35px;
+            border-radius: 25px;
+            color: white;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #03060a;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #222;
+        }
+
+        footer p {
+            color: #aaa;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width: 900px) {
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 11px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .early-text {
+                font-size: 30px;
+            }
+
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .volunteer {
+                grid-template-columns: 1fr;
+            }
+
+            .warning-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width: 600px) {
+
+            nav {
+                padding: 0 4%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero p {
+                font-size: 20px;
+            }
+
+            .early-text {
+                display: none;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .warning-section h2 {
+                font-size: 34px;
+            }
+
+            .map-section h1 {
+                font-size: 30px;
+            }
+
+            .rescue-section h1 {
+                font-size: 38px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav>
+
+    <div class="logo">
+        <div class="logo-icon">♦</div>
+       
+        <div class="logo-text">
+            DISASTER<br>
+            MANAGEMENT<br>
+            SYSTEM
+        </div>
+    </div>
+
+    <div class="nav-links">
+
+        <a href="#" class="sos">SOS</a>
+
+        <a href="#central">Central</a>
+
+        <a href="#monitoring">Live Monitoring</a>
+
+        <a href="#map">Disaster Map</a>
+
+        <a href="#warnings">Alerts</a>
+
+        <a href="#rescue">help</a>
+
+        
+
+    </div>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+
+    <section id="nagpur-blog">
+
+    <div class="hero-content">
+
+        <h1>
+            DISASTER<br>
+            MANAGEMENT SYSTEM
+        </h1>
+
+        <p>
+            Preparedness. Response. Resilience.
+        </p>
+
+        <button class="report-btn"
+                onclick="reportDisaster()">
+            Report Disaster
+        </button>
+
+    </div>
+
+    
+
+
+    <div class="features">
+
+       
+        <div class="feature">
+            Emergency Response Teams
+        </div>
+
+        <div class="feature">
+            Resource Allocation
+        </div>
+
+        <div class="feature">
+            rescue coordination
+        </div>
+
+    </div>
+       </section>
+</section>
+
+
+<!-- ================= VOLUNTEER + PREDICTION ================= -->
+
+<section class="volunteer" id="central">
+
+    <div>
+
+        <h2>
+            Volunteer Now
+        </h2>
+
+        <ul>
+
+            <li>
+                🆘 SOS Requests:
+                Victims can send emergency requests
+                with their location.
+            </li>
+
+            <li>
+                📍 Live Location Tracking:
+                Track victims and rescue teams in real time.
+            </li>
+
+            <li>
+                🚁 Drone Support:
+                Drones can search difficult or unsafe areas.
+            </li>
+
+            <li>
+                🚑 Team Dispatch:
+                Send the nearest rescue team to the
+                affected location.
+            </li>
+
+            <li>
+                🗺️ Safe Routes:
+                Suggest safe routes for rescue teams.
+            </li>
+
+            <li>
+                🏥 Hospital Coordination:
+                Direct injured people to nearby hospitals.
+            </li>
+
+            <li>
+                📡 Real-Time Communication:
+                Rescue teams receive alerts and updates instantly.
+            </li>
+
+        </ul>
+
+    </div>
+
+
+    <!-- Prediction Dashboard -->
+
+    <div class="prediction" id="monitoring">
+
+        <h2>
+            🔴 Disaster Risk Prediction
+        </h2>
+
+        <div class="prediction-item">
+            📍 High-Risk Location
+        </div>
+
+        <div class="prediction-item">
+            ⚠️ Risk Level
+        </div>
+
+        <div class="prediction-item">
+            🌐 Prediction Dashboard
+        </div>
+
+        <div class="search-box">
+
+            🔍
+
+            <span onclick="clearSearch()">
+                ✕
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= EARLY WARNING ================= -->
+
+<h2 class="warning-title">
+    ⚠️ EARLY WARNING
+</h2>
+
+
+<section class="warning-section" id="warnings">
+
+    <h2>
+        🚨 Available Warnings
+    </h2>
+
+
+    <div class="warning-cards">
+
+        <div class="warning-card">
+            <h3 class="high">
+                🔴 Flood Warning
+            </h3>
+
+            <p>
+                High water levels detected.
+                Move to a safer location.
+            </p>
+        </div>
+
+
+        <div class="warning-card">
+            <h3 class="medium">
+                🟠 Heavy Rain Warning
+            </h3>
+
+            <p>
+                Heavy rainfall is expected.
+                Avoid low-lying areas.
+            </p>
+        </div>
+
+
+        <div class="warning-card">
+            <h3 class="low">
+                🟢 Weather Advisory
+            </h3>
+
+            <p>
+                Monitor weather conditions
+                and follow official instructions.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MAP ================= -->
+
+<section class="map-section" id="map">
+
+    <h1>
+        disaster and mapping
+    </h1>
+
+    <h2>
+        live map and the rescue location
+    </h2>
+
+</section>
+
+
+<!-- ================= RESCUE TEAMS ================= -->
+
+<section class="rescue-section" id="rescue">
+
+    <h1>
+        our rescue teams
+    </h1>
+
+    <p>
+        Quickly contact nearby emergency teams
+        for immediate assistance.
+    </p>
+
+
+    <ul class="rescue-list">
+
+        <li>
+            🚑 Ambulance Team –
+            Medical emergency and patient transportation.
+        </li>
+
+        <li>
+            🚒 Fire & Rescue Team –
+            Fire incidents and rescue operations.
+        </li>
+
+        <li>
+            👮 Police Emergency Team –
+            Security, evacuation, and crowd management.
+        </li>
+
+        <li>
+            🛟 Disaster Response Team –
+            Flood, landslide, and other disaster rescue.
+        </li>
+
+        <li>
+            🚁 Drone Rescue Unit –
+            Search and monitoring in difficult-to-reach areas.
+        </li>
+
+    </ul>
+
+
+    <a href="tel:112" class="call-btn">
+        📞 Emergency Contact: Call Now
+    </a>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer id="contact">
+
+    <p>
+        © 2026 Disaster Management System |
+        Emergency Response & Safety
+    </p>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    function reportDisaster() {
+
+        alert(
+            "Disaster Report\n\n" +
+            "Please provide your location and emergency details."
+        );
+
+    }
+
+
+    function clearSearch() {
+
+        alert("Search cleared.");
+
+    }
+
+
+    // Simple SOS button
+
+    document.querySelector(".sos").addEventListener(
+        "click",
+        function(event) {
+
+            event.preventDefault();
+
+            let confirmSOS =
+                confirm(
+                    "Send emergency SOS request?"
+                );
+
+            if (confirmSOS) {
+
+                alert(
+                    "SOS request sent successfully!"
+                );
+
+            }
+
+        }
+    );
+
+</script>
+
+</body>
+</html>
